@@ -8,7 +8,7 @@
 - The logic is described as above image:
     - A,B,C arrived at X at the same time, and all three should be transported to Y
     - D also arrived at X and should be transported to Y, we don't care when D arrived at X
-    - As Dis the first transported after T, so it is "the mark" - A, B, C should be transported before or at that mark  
+    - As D is the first transported after T, so it is "the mark" - A, B, C should be transported before or at that mark  
 - Based on that logic:
     - A & B is transported on time
     - C is late
@@ -72,7 +72,7 @@ Two way to find the mark
  #### 2. Better option - Row_number before join
 - Step 1: 
     - select distinct from_point, to_point, to_time --> real transported mark
-    - select distinct from_point, to_point, from_time + T --> dummy mark
+    - select distinct from_point, to_point, from_time + T --> dummy mark 
     - union
 - Step 2: find the time before and after each time (and the type (real or dummy) respectively)
 - Step 3: select only dummy record, and remove if its previous and next record is also dummy
@@ -84,4 +84,4 @@ Two way to find the mark
 
 - This way the amount of records needs sorting much less than the 1st method (around 14 million records ~ 3,5 minutes query run)
 - After this, the join is simple
-- SQL find will illustrate how I find the mark for each dummy 
+- SQL file will illustrate how I find the mark for each dummy 
